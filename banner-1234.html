@@ -1,0 +1,95 @@
+<!-- Banners : 1/2/3/4 -->
+<section class="mb-4 mb-md-5" drag_id="1003">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-12 col-md-6">
+                  <div class="card hover-zoom text-bg-light border-0 rounded-4 overflow-hidden">
+                      <ms-banner :name="ms.variables.home_banner1">
+                          <div class="w-100 ratio ratio-4x3" v-if="banner.image">
+                              <ms-image class="img-fluid w-100" :src="ms.filters.image(banner.image, '640x640')" :alt="banner.title"></ms-image>
+                          </div>
+                          <div class="w-100 ratio ratio-4x3" v-if="!banner.image">
+                              <ms-image class="img-fluid w-100" :src="ms.filters.image('//cdn.storehippo.com/s/6273386e9744993653600c71/ms.files/No-Image-Found.png', '640x640')" :alt="banner.title"></ms-image>
+                          </div>
+                          <div class="card-img-overlay rounded-0" role="button" @click="ms.goTo(banner.url)">
+                              <div class="h-100 d-flex flex-column justify-content-start align-items-start" :class="{'w-75':ms.screen.l_up,'w-100':ms.screen.m_down}">
+                                  
+                                  <h3 class="mb-3 lh-sm" :class="{'h3':ms.screen.l_up,'h5':ms.screen.m_down}" v-if="banner.title"><span v-html="banner.title"></span></h3>
+                                  <h4 class="mb-0 fw-light h6 lh-sm" v-if="banner.subtitle"><span v-html="banner.subtitle"></span></h4><br>
+                                  <a v-if="banner.url" class="btn btn-primary rounded-pill px-3 btn-sm" :href="banner.url">
+                                      {{ms.filters.translate('Know More')}}
+                                  </a>
+                              </div>
+                          </div>
+                      </ms-banner>
+                  </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="d-flex flex-md-column gap-3">
+                    <div class="card hover-zoom text-bg-light border-0 rounded-4 overflow-hidden w-100">
+                        <ms-banner :name="ms.variables.home_banner2">
+                            <div class="w-100 ratio" :class="{'ratio-1x1':ms.screen.s_down,'ratio-4x3':ms.screen.m_up}" v-if="banner.image">
+                                <ms-image class="img-fluid w-100" :src="ms.filters.image(banner.image, '480x480')" :alt="banner.title"></ms-image>
+                            </div>
+                            <div class="w-100 ratio" :class="{'ratio-1x1':ms.screen.s_down,'ratio-4x3':ms.screen.m_up}" v-if="!banner.image">
+                                <ms-image class="img-fluid w-100" :src="ms.filters.image('//cdn.storehippo.com/s/6273386e9744993653600c71/ms.files/No-Image-Found.png', '480x480')" :alt="banner.title"></ms-image>
+                            </div>
+                            <div class="card-img-overlay rounded-0" role="button" @click="ms.goTo(banner.url)">
+                                <div class="h-100 d-flex flex-column justify-content-start align-items-start" :class="{'w-75':ms.screen.l_up,'w-100':ms.screen.m_down}">
+                                    <h4 class="mb-0 fw-light h6 lh-sm" v-if="banner.subtitle"><span v-html="banner.subtitle"></span></h4>
+                                    <h3 class="mb-3 lh-sm" :class="{'h5':ms.screen.l_up,'h6':ms.screen.m_down}" v-if="banner.title"><span v-html="banner.title"></span></h3>
+                                    <a v-if="banner.url" class="btn btn-primary rounded-pill px-3 btn-sm" :href="banner.url">
+                                        {{ms.filters.translate('Know More')}}
+                                    </a>
+                                </div>
+                            </div>
+                        </ms-banner>
+                    </div>
+                    <div class="card hover-zoom text-bg-light border-0 rounded-4 overflow-hidden w-100">
+                        <ms-banner :name="ms.variables.home_banner3">
+                            <div class="w-100 ratio" :class="{'ratio-1x1':ms.screen.s_down,'ratio-4x3':ms.screen.m_up}" v-if="banner.image">
+                                <ms-image class="img-fluid w-100" :src="ms.filters.image(banner.image, '480x480')" :alt="banner.title"></ms-image>
+                            </div>
+                            <div class="w-100 ratio" :class="{'ratio-1x1':ms.screen.s_down,'ratio-4x3':ms.screen.m_up}" v-if="!banner.image">
+                                <ms-image class="img-fluid w-100" :src="ms.filters.image('//cdn.storehippo.com/s/6273386e9744993653600c71/ms.files/No-Image-Found.png', '480x480')" :alt="banner.title"></ms-image>
+                            </div>
+                            <div class="card-img-overlay rounded-0" role="button" @click="ms.goTo(banner.url)">
+                                <div class="h-100 d-flex flex-column justify-content-start align-items-start" :class="{'w-75':ms.screen.l_up,'w-100':ms.screen.m_down}">
+                                    <h4 class="mb-0 fw-light h6 lh-sm" v-if="banner.subtitle"><span v-html="banner.subtitle"></span></h4>
+                                    <h3 class="mb-3 lh-sm" :class="{'h5':ms.screen.l_up,'h6':ms.screen.m_down}" v-if="banner.title"><span v-html="banner.title"></span></h3>
+                                    <a v-if="banner.url" class="btn btn-primary rounded-pill px-3 btn-sm" :href="banner.url">
+                                        {{ms.filters.translate('Know More')}}
+                                    </a>
+                                </div>
+                            </div>
+                        </ms-banner>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card hover-zoom text-bg-light border-0 rounded-4 overflow-hidden h-100">
+                    <ms-banner :name="ms.variables.home_banner4">
+                        <div class="w-100 h-100 ratio ratio-1x1" v-if="banner.image">
+                            <ms-image class="img-fluid w-100" :src="ms.filters.image(banner.image, '640x640')" :alt="banner.title"></ms-image>
+                        </div>
+                        <div class="w-100 h-100 ratio" :class="{'ratio-4x3':ms.screen.s_down,'ratio-1x1':ms.screen.m_up}" v-if="!banner.image">
+                            <ms-image class="img-fluid w-100" :src="ms.filters.image('//cdn.storehippo.com/s/6273386e9744993653600c71/ms.files/No-Image-Found.png', '640x640')" :alt="banner.title"></ms-image>
+                        </div>
+                        <div class="card-img-overlay rounded-0" role="button" @click="ms.goTo(banner.url)">
+                            <div class="h-100 d-flex flex-column justify-content-start align-items-start" :class="{'w-75':ms.screen.l_up,'w-100':ms.screen.m_down}">
+                                
+                                <h3 class="mb-3 lh-sm" :class="{'h5':ms.screen.l_up,'h6':ms.screen.m_down}" v-if="banner.title"><span v-html="banner.title"></span></h3>
+                                <h4 class="mb-0 fw-light h6 lh-sm" v-if="banner.subtitle"><span v-html="banner.subtitle"></span></h4><br>
+
+                                <a v-if="banner.url" class="btn btn-primary rounded-pill px-3 btn-sm" :href="banner.url">
+                                    {{ms.filters.translate('Know More')}}
+                                </a>
+                            </div>
+                        </div>
+                    </ms-banner>
+                </div>
+           </div>
+        </div> 
+    </div>
+  </section>
+  <!-- ./Banners : 1/2/3/4 -->
