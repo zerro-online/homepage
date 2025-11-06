@@ -1,0 +1,298 @@
+<!-- Home V13 -->
+<!-- Main Slider -->
+<ms-slides> 
+    <section class="mb-0" v-if="slides.length" drag_id="1001">
+        <div class="container-fluid p-0">
+            <w-home-carousel :slides="slides"></w-home-carousel>
+        </div>
+    </section>
+</ms-slides>
+<!-- /Main Slider --> 
+
+<!-- Shop By Categories -->
+<ms-categories>
+    <section class="bg-light mb-4 py-4 mb-md-5 py-md-5 position-relative" :class="{'shadow-sm':ms.screen.s_down}" v-if="categories &amp;&amp; categories.length" drag_id="1002">
+      <div class="container">
+        <!-- Section Heading -->
+        <div class="mb-4 d-flex flex-column align-items-center">
+            <h3 class="d-flex flex-column align-items-center fw-semibold mb-0 position-relative" :class="{'h2':ms.screen.m_up,'h3':ms.screen.s_down}">
+                {{ms.filters.translate('Explore Categories')}}
+            </h3>
+        </div>
+        <!-- Section Heading -->
+        <div class="categories">
+            <ms-addon-slick-carousel :options="{arrows: true,slidesToShow:7,slidesToScroll: 6,infinite: true,initialSlide: 0,dots:false,autoplay: false,autoplaySpeed: 2000,swipeToSlide: true,pauseOnHover:true,prevArrow: '&lt;div class=&quot;slick-arrow slick-prev&quot;&gt;&lt;i class=&quot;bi bi-chevron-left lh-1&quot;&gt;&lt;/i&gt;&lt;/div&gt;',nextArrow: '&lt;div class=&quot;slick-arrow slick-next&quot;&gt;&lt;i class=&quot;bi bi-chevron-right lh-1&quot;&gt;&lt;/i&gt;&lt;/div&gt;',responsive: [{breakpoint: 1200,settings:{slidesToShow: 6,slidesToScroll: 5,}},{breakpoint: 992,settings:{slidesToShow: 4,slidesToScroll: 4,}},{breakpoint: 575,settings:{slidesToShow: 2,slidesToScroll: 2,centerMode: true,centerPadding:'30px'}}]}">
+                <div class="items px-2" v-for="(category,index) in categories">
+                    <a class="d-block text-center bg-primary bg-opacity-10 rounded-4 px-1 py-3 p-md-3" :href="'/browse/'+ category.alias">
+                        <template v-for="(image,index) in category.images"> 
+                            <div class="rounded-circle ratio ratio-1x1 bg-white shadow overflow-hidden w-75 mx-auto" v-if="index==0">
+                                <ms-image class="img-fluid mx-auto" width="120" height="120" :src="ms.filters.image(image.image,'300x300')" :alt="category.name"></ms-image>
+                            </div>
+                        </template>
+                        <span class="text-dark fw-semibold mt-3 d-block text-truncate" :class="{'small': ms.screen.s_down}">
+                            {{category.name}}
+                        </span>
+                    </a>
+                </div>
+            </ms-addon-slick-carousel>
+        </div>
+      </div>
+    </section>
+</ms-categories>
+<!-- ./Shop By Categories -->
+
+<!-- Banners : 1/2/3/4 -->
+<section class="mb-4 mb-md-5" drag_id="1003">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-12 col-md-6">
+                  <div class="card hover-zoom text-bg-light border-0 rounded-4 overflow-hidden">
+                      <ms-banner :name="ms.variables.home_banner1">
+                          <div class="w-100 ratio ratio-4x3" v-if="banner.image">
+                              <ms-image class="img-fluid w-100" :src="ms.filters.image(banner.image, '640x640')" :alt="banner.title"></ms-image>
+                          </div>
+                          <div class="w-100 ratio ratio-4x3" v-if="!banner.image">
+                              <ms-image class="img-fluid w-100" :src="ms.filters.image('//cdn.storehippo.com/s/6273386e9744993653600c71/ms.files/No-Image-Found.png', '640x640')" :alt="banner.title"></ms-image>
+                          </div>
+                          <div class="card-img-overlay rounded-0" role="button" @click="ms.goTo(banner.url)">
+                              <div class="h-100 d-flex flex-column justify-content-start align-items-start" :class="{'w-75':ms.screen.l_up,'w-100':ms.screen.m_down}">
+                                  
+                                  <h3 class="mb-3 lh-sm" :class="{'h3':ms.screen.l_up,'h5':ms.screen.m_down}" v-if="banner.title"><span v-html="banner.title"></span></h3>
+                                  <h4 class="mb-0 fw-light h6 lh-sm" v-if="banner.subtitle"><span v-html="banner.subtitle"></span></h4><br>
+                                  <a v-if="banner.url" class="btn btn-primary rounded-pill px-3 btn-sm" :href="banner.url">
+                                      {{ms.filters.translate('Know More')}}
+                                  </a>
+                              </div>
+                          </div>
+                      </ms-banner>
+                  </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="d-flex flex-md-column gap-3">
+                    <div class="card hover-zoom text-bg-light border-0 rounded-4 overflow-hidden w-100">
+                        <ms-banner :name="ms.variables.home_banner2">
+                            <div class="w-100 ratio" :class="{'ratio-1x1':ms.screen.s_down,'ratio-4x3':ms.screen.m_up}" v-if="banner.image">
+                                <ms-image class="img-fluid w-100" :src="ms.filters.image(banner.image, '480x480')" :alt="banner.title"></ms-image>
+                            </div>
+                            <div class="w-100 ratio" :class="{'ratio-1x1':ms.screen.s_down,'ratio-4x3':ms.screen.m_up}" v-if="!banner.image">
+                                <ms-image class="img-fluid w-100" :src="ms.filters.image('//cdn.storehippo.com/s/6273386e9744993653600c71/ms.files/No-Image-Found.png', '480x480')" :alt="banner.title"></ms-image>
+                            </div>
+                            <div class="card-img-overlay rounded-0" role="button" @click="ms.goTo(banner.url)">
+                                <div class="h-100 d-flex flex-column justify-content-start align-items-start" :class="{'w-75':ms.screen.l_up,'w-100':ms.screen.m_down}">
+                                    <h4 class="mb-0 fw-light h6 lh-sm" v-if="banner.subtitle"><span v-html="banner.subtitle"></span></h4>
+                                    <h3 class="mb-3 lh-sm" :class="{'h5':ms.screen.l_up,'h6':ms.screen.m_down}" v-if="banner.title"><span v-html="banner.title"></span></h3>
+                                    <a v-if="banner.url" class="btn btn-primary rounded-pill px-3 btn-sm" :href="banner.url">
+                                        {{ms.filters.translate('Know More')}}
+                                    </a>
+                                </div>
+                            </div>
+                        </ms-banner>
+                    </div>
+                    <div class="card hover-zoom text-bg-light border-0 rounded-4 overflow-hidden w-100">
+                        <ms-banner :name="ms.variables.home_banner3">
+                            <div class="w-100 ratio" :class="{'ratio-1x1':ms.screen.s_down,'ratio-4x3':ms.screen.m_up}" v-if="banner.image">
+                                <ms-image class="img-fluid w-100" :src="ms.filters.image(banner.image, '480x480')" :alt="banner.title"></ms-image>
+                            </div>
+                            <div class="w-100 ratio" :class="{'ratio-1x1':ms.screen.s_down,'ratio-4x3':ms.screen.m_up}" v-if="!banner.image">
+                                <ms-image class="img-fluid w-100" :src="ms.filters.image('//cdn.storehippo.com/s/6273386e9744993653600c71/ms.files/No-Image-Found.png', '480x480')" :alt="banner.title"></ms-image>
+                            </div>
+                            <div class="card-img-overlay rounded-0" role="button" @click="ms.goTo(banner.url)">
+                                <div class="h-100 d-flex flex-column justify-content-start align-items-start" :class="{'w-75':ms.screen.l_up,'w-100':ms.screen.m_down}">
+                                    <h4 class="mb-0 fw-light h6 lh-sm" v-if="banner.subtitle"><span v-html="banner.subtitle"></span></h4>
+                                    <h3 class="mb-3 lh-sm" :class="{'h5':ms.screen.l_up,'h6':ms.screen.m_down}" v-if="banner.title"><span v-html="banner.title"></span></h3>
+                                    <a v-if="banner.url" class="btn btn-primary rounded-pill px-3 btn-sm" :href="banner.url">
+                                        {{ms.filters.translate('Know More')}}
+                                    </a>
+                                </div>
+                            </div>
+                        </ms-banner>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card hover-zoom text-bg-light border-0 rounded-4 overflow-hidden h-100">
+                    <ms-banner :name="ms.variables.home_banner4">
+                        <div class="w-100 h-100 ratio ratio-1x1" v-if="banner.image">
+                            <ms-image class="img-fluid w-100" :src="ms.filters.image(banner.image, '640x640')" :alt="banner.title"></ms-image>
+                        </div>
+                        <div class="w-100 h-100 ratio" :class="{'ratio-4x3':ms.screen.s_down,'ratio-1x1':ms.screen.m_up}" v-if="!banner.image">
+                            <ms-image class="img-fluid w-100" :src="ms.filters.image('//cdn.storehippo.com/s/6273386e9744993653600c71/ms.files/No-Image-Found.png', '640x640')" :alt="banner.title"></ms-image>
+                        </div>
+                        <div class="card-img-overlay rounded-0" role="button" @click="ms.goTo(banner.url)">
+                            <div class="h-100 d-flex flex-column justify-content-start align-items-start" :class="{'w-75':ms.screen.l_up,'w-100':ms.screen.m_down}">
+                                
+                                <h3 class="mb-3 lh-sm" :class="{'h5':ms.screen.l_up,'h6':ms.screen.m_down}" v-if="banner.title"><span v-html="banner.title"></span></h3>
+                                <h4 class="mb-0 fw-light h6 lh-sm" v-if="banner.subtitle"><span v-html="banner.subtitle"></span></h4><br>
+
+                                <a v-if="banner.url" class="btn btn-primary rounded-pill px-3 btn-sm" :href="banner.url">
+                                    {{ms.filters.translate('Know More')}}
+                                </a>
+                            </div>
+                        </div>
+                    </ms-banner>
+                </div>
+           </div>
+        </div> 
+    </div>
+  </section>
+  <!-- ./Banners : 1/2/3/4 -->
+
+<!-- Collection 1 -->
+<ms-products grouptype="collection" :groupalias="ms.variables.home_collection1">
+    <section class="w-100 mb-4 mb-md-5" v-if="group.products.length" drag_id="1004">
+        <div class="container">
+            <!-- Heading Tab -->
+            <div class="heading-tab d-flex justify-content-between position-relative mb-3 mb-md-4" :class="{'align-items-start':ms.screen.s_down,'align-items-end':ms.screen.m_up,'':ms.screen.xl_up}">
+                <h3 class="fw-semibold mb-0 me-4" :class="{'h3':ms.screen.m_up,'h6':ms.screen.s_down}">{{group.name}}</h3>
+                <a class="text-primary text-nowrap small" :href="'/collection/'+group.alias">{{ms.filters.translate('View All')}}</a>
+            </div>
+            <div class="bg-primary bg-opacity-10 border border-primary py-3 p-md-4 rounded-4">
+                <w-product-grid-carousel :group="group"> </w-product-grid-carousel>
+            </div>
+        </div>
+    </section>
+</ms-products>
+<!-- /Collection 1 -->
+
+<!-- Collection 2 -->
+<ms-products grouptype="collection" :groupalias="ms.variables.home_collection2" page-size="10" :filters="[{field: 'publish', value: 1}]">
+    <section class="w-100 mb-4 mb-md-5" v-if="group.products.length" drag_id="1005">
+        <div class="container" :class="{'px-0': ms.screen.s_down}">
+            <div class="row align-items-center position-relative" :class="{'g-0': ms.screen.s_down}">
+                  <!-- Section Heading -->
+                  <div class="d-flex position-relative align-items-center mb-3 mb-md-4" :class="{'justify-content-between px-2':ms.screen.s_down}">
+                    <h3 class="fw-semibold mb-0 me-4 ms-1" :class="{'h3':ms.screen.m_up,'h6':ms.screen.s_down}">{{group.name}}</h3>
+                    <a class="text-primary text-nowrap small" :href="'/collection/'+group.alias" v-if="ms.screen.s_down">{{ms.filters.translate('View All')}}</a>
+                  </div>
+                  <!-- Section Heading -->
+                <div class="col-12">
+                    <div class="row g-3" :class="{'row-cols-md-2 row-cols-lg-3 row-cols-xl-5':ms.screen.m_up,'flex-nowrap overflow-auto  no-scrollbar mx-0 px-1':ms.screen.s_down}">
+                        <div v-for="product in group.products" :class="{'col':ms.screen.m_up,'col-10 col-sm-7':ms.screen.s_down}">
+                              <w-product-grid-item :product="product"></w-product-grid-item>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="ms.screen.m_up" class="d-flex justify-content-center mt-4">
+                <a :href="'/collection/'+group.alias" class="btn btn-outline-primary rounded-pill px-md-5" :class="{'btn-sm':ms.screen.s_down}">{{ms.filters.translate('View All')}}</a>
+            </div>
+        </div>
+    </section>
+</ms-products>
+<!-- /Collection 2 -->
+
+
+<!-- Parallax banner -->
+<section class="position-relative mb-4 mb-md-5" drag_id="1006">
+    <ms-banner name="parallax-banner" :name="ms.variables.home_banner7">
+        <div class="py-5" :style="{background:'url(' + ms.filters.image(banner.image, '1920x1280') + ') fixed top center / cover'}">
+            <div class="container">
+                <div class="row py-lg-5">
+                    <div class="col-md-7 py-md-4 py-xxl-5 my-xxl-5">
+                        <div class="d-flex flex-column align-items-center align-items-md-start text-center text-md-start">
+                            <h3 class="text-white mb-3 fs-5" v-if="banner.subtitle">{{banner.subtitle}}</h3>
+                            <h2 class="text-white fw-bold mb-4 mb-md-5" :class="{'h1': ms.screen.l_up, 'h3': ms.screen.m_down}" v-if="banner.title" v-html="ms.filters.translate(banner.title)"></h2>
+                            <a v-if="banner.url" class="btn btn-outline-light rounded-pill px-4 px-md-5" :class="{'btn-sm': ms.screen.m_down}" :href="banner.url">
+                                {{ms.filters.translate('Buy Now')}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ms-banner>
+</section>
+<!-- Parallax banner -->
+
+<!-- Collection 3 -->
+<ms-products grouptype="collection" :groupalias="ms.variables.home_collection3">
+    <section class="w-100 mb-4 mb-md-5" v-if="group.products.length" drag_id="1007">
+        <div class="container">
+            <!-- Heading Tab -->
+            <div class="heading-tab d-flex justify-content-between position-relative mb-3 mb-md-4" :class="{'align-items-start px-1':ms.screen.s_down,'align-items-end':ms.screen.m_up,'':ms.screen.xl_up}">
+                <div class="text-dark me-4">
+                    <h3 class="fw-semibold mb-0" :class="{'h3':ms.screen.m_up,'h6':ms.screen.s_down}">{{group.name}}</h3>
+                </div>
+                <a class="text-primary text-nowrap small" :href="'/collection/'+group.alias">{{ms.filters.translate('View All')}}</a>
+            </div>
+            <div class="row">
+                <div class="col-12 px-0 px-md-1">
+                    <w-product-grid-carousel :group="group"> </w-product-grid-carousel>
+                </div>
+            </div>
+        </div>
+    </section>
+</ms-products>
+<!-- /Collection 3 -->
+
+<!-- Collection 4 -->
+<ms-products grouptype="collection" :groupalias="ms.variables.home_collection4">
+    <section class="w-100 mb-4 mb-md-5" v-if="group.products.length" drag_id="1008">
+        <div class="container">
+            <!-- Heading Tab -->
+            <div class="heading-tab d-flex justify-content-between position-relative mb-3 mb-md-4" :class="{'align-items-start px-1':ms.screen.s_down,'align-items-end':ms.screen.m_up,'':ms.screen.xl_up}">
+                <div class="text-dark me-4">
+                    <h3 class="fw-semibold mb-0" :class="{'h3':ms.screen.m_up,'h6':ms.screen.s_down}">{{group.name}}</h3>
+                </div>
+                <a class="text-primary text-nowrap small" :href="'/collection/'+group.alias">{{ms.filters.translate('View All')}}</a>
+            </div>
+            <div class="row">
+                <div class="col-12 px-0 px-md-1">
+                    <w-product-grid-carousel :group="group"> </w-product-grid-carousel>
+                </div>
+            </div>
+        </div>
+    </section>
+</ms-products>
+<!-- /Collection 4 -->
+
+<!-- Banners : 5/6 -->
+<section class="w-100 mb-4 mb-md-5" drag_id="1009">
+    <div class="container" :class="{'p-0':ms.screen.s_down}">
+        <div class="row flex-nowrap flex-row overflow-auto  no-scrollbar g-3" :class="{'mx-0 px-2':ms.screen.s_down}">
+            <div class="col-11 col-md-6">
+                <div class="card hover-zoom text-bg-light border-0 rounded-4 overflow-hidden">
+                    <ms-banner :name="ms.variables.home_banner5">
+                        <div class="w-100 ratio ratio-21x9" v-if="banner.image">
+                            <ms-image class="img-fluid w-100" :src="ms.filters.image(banner.image, '480x480')" :alt="banner.title"></ms-image>
+                        </div>
+                        <div class="w-100 ratio ratio-21x9" v-if="!banner.image">
+                            <ms-image class="img-fluid w-100" :src="ms.filters.image('//cdn.storehippo.com/s/6273386e9744993653600c71/ms.files/No-Image-Found.png', '480x480')" :alt="banner.title"></ms-image>
+                        </div>
+                        <div class="card-img-overlay rounded-0" role="button" @click="ms.goTo(banner.url)">
+                            <div class="h-100 d-flex flex-column justify-content-center align-items-start" :class="{'w-75':ms.screen.l_up,'w-100':ms.screen.m_down}">
+                                <h4 class="mb-0 fw-light h6 lh-base" v-if="banner.subtitle"><span v-html="banner.subtitle"></span></h4>
+                                <h3 class="mb-3 lh-base" :class="{'h4':ms.screen.l_up,'h6':ms.screen.m_down}" v-if="banner.title"><span v-html="banner.title"></span></h3>
+                                <a v-if="banner.url" class="btn btn-primary rounded-pill px-3 btn-sm" :href="banner.url">
+                                    {{ms.filters.translate('Buy Now')}}
+                                </a>
+                            </div>
+                        </div>
+                    </ms-banner>
+                </div>
+            </div>
+            <div class="col-11 col-md-6">
+                <div class="card hover-zoom text-bg-light border-0 rounded-4 overflow-hidden">
+                    <ms-banner :name="ms.variables.home_banner6">
+                        <div class="w-100 ratio ratio-21x9" v-if="banner.image">
+                            <ms-image class="img-fluid w-100" :src="ms.filters.image(banner.image, '480x480')" :alt="banner.title"></ms-image>
+                        </div>
+                        <div class="w-100 ratio ratio-21x9" v-if="!banner.image">
+                            <ms-image class="img-fluid w-100" :src="ms.filters.image('//cdn.storehippo.com/s/6273386e9744993653600c71/ms.files/No-Image-Found.png', '480x480')" :alt="banner.title"></ms-image>
+                        </div>
+                        <div class="card-img-overlay rounded-0" role="button" @click="ms.goTo(banner.url)">
+                            <div class="h-100 d-flex flex-column justify-content-center align-items-start" :class="{'w-75':ms.screen.l_up,'w-100':ms.screen.m_down}">
+                                <h4 class="mb-0 fw-light h6 lh-base" v-if="banner.subtitle"><span v-html="banner.subtitle"></span></h4>
+                                <h3 class="mb-3 lh-base" :class="{'h4':ms.screen.l_up,'h6':ms.screen.m_down}" v-if="banner.title"><span v-html="banner.title"></span></h3>
+                                <a v-if="banner.url" class="btn btn-primary rounded-pill px-3 btn-sm" :href="banner.url">
+                                    {{ms.filters.translate('Buy Now')}}
+                                </a>
+                            </div>
+                        </div>
+                    </ms-banner>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!-- ./Banners : 5/6 -->
