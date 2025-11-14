@@ -1,0 +1,98 @@
+<!-- newredesign -->
+<!-- 4 Banner Grid : Boxed Width + 15px Spacing -->
+<section class="w-100 mb-4 mb-md-5" drag_id="1003">
+  <div style="max-width:1200px; margin:auto; padding:0 12px;">
+    <!-- Flex container with 15px spacing -->
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; margin:-7.5px;">
+
+      <!-- Banner 1 -->
+      <div :style="ms.screen.s_down 
+          ? 'flex:1 1 calc(50% - 15px); margin:7.5px; border-radius:16px; overflow:hidden; position:relative; display:flex; height:200px;' 
+          : 'flex:1 1 calc(25% - 15px); margin:7.5px; border-radius:18px; overflow:hidden; position:relative; display:flex; height:230px;'">
+        <ms-banner :name="ms.variables.home_banner1">
+          <div v-if="banner.image" style="width:100%; height:100%; position:relative; overflow:hidden; border-radius:inherit;">
+            <ms-image class="img-fluid" :src="ms.filters.image(banner.image, '640x640')" :alt="banner.title" style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
+            </ms-image>
+            <!-- Subtle white overlay -->
+            <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(255,255,255,0.92) 25%, rgba(255,255,255,0) 70%); border-radius:inherit;"></div>
+            <!-- Content -->
+            <div style="position:absolute; bottom:10px; left:10px; right:10px; display:flex; flex-direction:column; align-items:flex-start;">
+              <h3 v-if="banner.title" style="font-size:0.9rem; color:#2a1d0a; font-weight:600; margin:0 0 4px 0;">
+                  {{ banner.title }}
+              </h3>
+              <a v-if="banner.url" :href="banner.url" style="background:#4e2c0a; color:#fff; text-decoration:none; border-radius:14px; padding:4px 10px; font-size:0.7rem;">
+                 Know More
+              </a>
+            </div>
+          </div>
+        </ms-banner>
+      </div>
+
+      <!-- Banner 2 -->
+      <div :style="ms.screen.s_down 
+          ? 'flex:1 1 calc(50% - 15px); margin:7.5px; border-radius:16px; overflow:hidden; position:relative; display:flex; height:200px;' 
+          : 'flex:1 1 calc(25% - 15px); margin:7.5px; border-radius:18px; overflow:hidden; position:relative; display:flex; height:230px;'">
+        <ms-banner :name="ms.variables.home_banner2">
+          <div v-if="banner.image" style="width:100%; height:100%; position:relative; overflow:hidden; border-radius:inherit;">
+            <ms-image class="img-fluid" :src="ms.filters.image(banner.image, '640x640')" :alt="banner.title" style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
+            </ms-image>
+            <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(255,255,255,0.92) 25%, rgba(255,255,255,0) 70%); border-radius:inherit;"></div>
+            <div style="position:absolute; bottom:10px; left:10px; right:10px; display:flex; flex-direction:column; align-items:flex-start;">
+              <h3 v-if="banner.title" style="font-size:0.9rem; color:#2a1d0a; font-weight:600; margin:0 0 4px 0;">
+                  {{ banner.title }}
+              </h3>
+              <a v-if="banner.url" :href="banner.url" style="background:#4e2c0a; color:#fff; text-decoration:none; border-radius:14px; padding:4px 10px; font-size:0.7rem;">
+                 Know More
+              </a>
+            </div>
+          </div>
+        </ms-banner>
+      </div>
+
+      <!-- Banner 3 -->
+      <div :style="ms.screen.s_down 
+          ? 'flex:1 1 calc(50% - 15px); margin:7.5px; border-radius:16px; overflow:hidden; position:relative; display:flex; height:200px;' 
+          : 'flex:1 1 calc(25% - 15px); margin:7.5px; border-radius:18px; overflow:hidden; position:relative; display:flex; height:230px;'">
+        <ms-banner :name="ms.variables.home_banner3">
+          <div v-if="banner.image" style="width:100%; height:100%; position:relative; overflow:hidden; border-radius:inherit;">
+            <ms-image class="img-fluid" :src="ms.filters.image(banner.image, '640x640')" :alt="banner.title" style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
+            </ms-image>
+            <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(255,255,255,0.92) 25%, rgba(255,255,255,0) 70%); border-radius:inherit;"></div>
+            <div style="position:absolute; bottom:10px; left:10px; right:10px; display:flex; flex-direction:column; align-items:flex-start;">
+              <h3 v-if="banner.title" style="font-size:0.9rem; color:#2a1d0a; font-weight:600; margin:0 0 4px 0;">
+                  {{ banner.title }}
+              </h3>
+              <a v-if="banner.url" :href="banner.url" style="background:#4e2c0a; color:#fff; text-decoration:none; border-radius:14px; padding:4px 10px; font-size:0.7rem;">
+                 Know More
+              </a>
+            </div>
+          </div>
+        </ms-banner>
+      </div>
+
+      <!-- Banner 4 -->
+      <div :style="ms.screen.s_down 
+          ? 'flex:1 1 calc(50% - 15px); margin:7.5px; border-radius:16px; overflow:hidden; position:relative; display:flex; height:200px;' 
+          : 'flex:1 1 calc(25% - 15px); margin:7.5px; border-radius:18px; overflow:hidden; position:relative; display:flex; height:230px;'">
+        <ms-banner :name="ms.variables.home_banner4">
+          <div v-if="banner.image" style="width:100%; height:100%; position:relative; overflow:hidden; border-radius:inherit;">
+            <ms-image class="img-fluid" :src="ms.filters.image(banner.image, '640x640')" :alt="banner.title" style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
+            </ms-image>
+            <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(255,255,255,0.92) 25%, rgba(255,255,255,0) 70%); border-radius:inherit;"></div>
+            <div style="position:absolute; bottom:10px; left:10px; right:10px; display:flex; flex-direction:column; align-items:flex-start;">
+              <h3 v-if="banner.title" style="font-size:0.9rem; color:#2a1d0a; font-weight:600; margin:0 0 4px 0;">
+                  {{ banner.title }}
+              </h3>
+              <a v-if="banner.url" :href="banner.url" style="background:#4e2c0a; color:#fff; text-decoration:none; border-radius:14px; padding:4px 10px; font-size:0.7rem;">
+                 Know More
+              </a>
+            </div>
+          </div>
+        </ms-banner>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ./newredesign -->
